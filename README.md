@@ -16,16 +16,16 @@
 * You can have both {fmt} and google-benchmark _installed_, in this case, the commands would be:
   ```bash
   # in directory A: configure, build and install google-benchmark
-  cmake -DCMAKE_BUILD_TYPE=Release
-        -DBENCHMARK_ENABLE_TESTING=OFF
-        -DBENCHMARK_ENABLE_GTEST_TESTS=OFF
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DBENCHMARK_ENABLE_TESTING=OFF \
+        -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
         <google-benchmark-path>
   cmake --build . --target install
   
   # in directory B: configure, build and install {fmt}
-  cmake -DCMAKE_BUILD_TYPE=Release
-        -DFMT_DOC=OFF
-        -DFMT_TEST=OFF
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DFMT_DOC=OFF \
+        -DFMT_TEST=OFF \
         <{fmt}-path>
   cmake --build . --target install
   
