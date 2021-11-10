@@ -1,6 +1,7 @@
 #include "pseudo_random.hpp"
 
 #include <array>
+#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <limits>
@@ -86,6 +87,39 @@ struct pseudo_random_data<T, std::enable_if_t<std::is_same_v<T, void*>>> {
   };
 };
 
+template <typename T>
+struct pseudo_random_data<T, std::enable_if_t<std::is_same_v<T, std::tm>>> {
+  inline static auto items = std::array{
+      std::tm(),
+      []() {
+        auto tm = std::tm();
+        tm.tm_sec = 3;
+        tm.tm_min = 6;
+        tm.tm_hour = 5;
+        tm.tm_mday = 9;
+        tm.tm_mon = 0;
+        tm.tm_year = 39;
+        tm.tm_wday = 1;
+        tm.tm_yday = 8;
+        tm.tm_isdst = 1;
+        return tm;
+      }(),
+      []() {
+        auto tm = std::tm();
+        tm.tm_sec = 47;
+        tm.tm_min = 31;
+        tm.tm_hour = 20;
+        tm.tm_mday = 19;
+        tm.tm_mon = 11;
+        tm.tm_year = 24;
+        tm.tm_wday = 5;
+        tm.tm_yday = 353;
+        tm.tm_isdst = 0;
+        return tm;
+      }(),
+  };
+};
+
 template <typename T> T const& pseudo_random_generator<T>::get() noexcept {
   auto const& items = pseudo_random_data<T>::items;
   return items[current_index++ % items.size()];
@@ -114,3 +148,5 @@ template class pseudo_random_generator<char>;
 template class pseudo_random_generator<char const*>;
 template class pseudo_random_generator<std::string>;
 template class pseudo_random_generator<std::string_view>;
+
+template class pseudo_random_generator<std::tm>;
