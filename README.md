@@ -1,5 +1,7 @@
 ## Benchmarks of [{fmt}](https://github.com/fmtlib/fmt)
 
+**[Check out the latest results online](https://alexezeder.github.io/fmt_bnchmrk/)**
+
 ### How to build
 
 0. Get [{fmt}](https://github.com/fmtlib/fmt) and [google-benchmark](https://github.com/google/benchmark):
@@ -55,5 +57,9 @@
 ### Automated run
 
 There is a [satellite project](https://github.com/alexezeder/fmt_bnchmrk_gnrtr) to run these
-benchmarks automatically, but currently, it's too specific for GitHub Pages creation for this repo.
-Feel free to open issues and PRs.
+benchmarks automatically and generate results as HTML pages. The results
+[are available](https://alexezeder.github.io/fmt_bnchmrk/) on GitHub Pages
+for this repository.
+
+
+### Feel free to open issues and PRs.
