@@ -1,6 +1,7 @@
 #include <benchmark/benchmark.h>
 #include <fmt/format.h>
 
+#include <cfloat>
 #include <cstddef>
 #include <cstdint>
 #include <string>
@@ -21,7 +22,9 @@
 
 ADD_BENCHMARK(float, float_type);
 ADD_BENCHMARK(double, double_type);
+#if LDBL_MANT_DIG == 64
 ADD_BENCHMARK(long double, long_double_type);
+#endif
 
 ADD_BENCHMARK(bool, bool_type);
 ADD_BENCHMARK(int16_t, int16);
